@@ -43,20 +43,20 @@ valid_values = {
             "Strict-Transport-Security": "max-age=<expire-time>",
             "Access-Control-Allow-Origin": "<origin>",
             "X-XSS-Protection": "1; mode=block",
-            "X-Frame-Options": f"DENY\n\t{lgreen}[OR]->\t\t{lblue}SAMEORIGIN",
-            "X-Content-Type-Options": "X-Content-Type-Options: nosniff",
+            "X-Frame-Options": f"DENY\t{lblue}[OR]->\t{lred}SAMEORIGIN",
+            "X-Content-Type-Options": "nosniff",
             "Content-Security-Policy": "Content-Security-Policy: default-src 'self'"
             }
 
 corrent_values = {}
 
 # Links to fix
-Strict_Transport_Security = "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security"
-Access_Control_Allow_Origin = "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin"
-X_XSS_Protection = "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-XSS-Protection"
-X_Frame_Options = "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options"
-X_Content_Type_Options = "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Content-Type-Options"
-Content_Security_Policy = "https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP"
+links = {"Strict_Transport_Security":"https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security",
+"Access_Control_Allow_Origin":"https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin",
+"X_XSS_Protection":"https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-XSS-Protection",
+"X_Frame_Options":"https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options",
+"X_Content_Type_Options":"https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Content-Type-Options",
+"Content_Security_Policy":"https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP"}
 
 # Settings
 exist_header = []
@@ -92,9 +92,9 @@ def help():
 def get_headers(url, cors, origin_header):
     try:
         if cors == True:
-            response = head(url, headers = {"Origin":origin_header})
+            response = head(url, headers = {"Origin":origin_header}, allow_redirects=True, verify=False)
         else:
-            response = head(url)
+            response = head(url, allow_redirects=True, verify=False)
         headers = (response.headers)
         return headers.items()
     except Exception as error:
@@ -126,8 +126,8 @@ def printer(url, headers):
         print(f"{lgreen}-- [Implemented] --{default}")
         for header in exist_header:
             print(f"{lgreen}{header}{default}")
-            print(f"\t{lgreen}[*] {lblue}The corrent Value is " + corrent_values[header] + f"{default}")
-            print(f"\t{lgreen}[*] {lblue}The best value is " + valid_values[header] + f"{default}")
+            print(f"\t{lgreen}[*] {lblue}The corrent Value is\n\t\t{lred}" + corrent_values[header] + f"{default}\n")
+            print(f"\t{lgreen}[*] {lblue}The best value is\n\t\t{lred}" + valid_values[header] + f"{default}\n")
 
     except Exception as error:
         print(error)
