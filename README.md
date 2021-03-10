@@ -14,7 +14,7 @@ Security Headers check v1.0  *-* created by mehran-seiflainia *-*
 # Change Log:
 * [v 1.0.0:](https://github.com/Mehran-Seifalinia/SecurityHeadersCheck/commit/55954832da85ed9985a205003d7d263bc13e81bd)
   * Release
-* [v 1.1.0:](https://github.com/Mehran-Seifalinia/SecurityHeadersCheck/commit/55954832da85ed9985a205003d7d263bc13e81bd)
+* [v 1.1.0:](https://github.com/Mehran-Seifalinia/SecurityHeadersCheck/commit/58e4e11d34ab37f93a910e8c8ade4288a2cb59b3)
   * Fix pip modules installation
 * [v 1.5.2:](https://github.com/Mehran-Seifalinia/SecurityHeadersCheck/commit/cac4d4c5879c9a8fa18f704caa5d7c7eddfbeeda)
   * Fix 302 redirection problem
