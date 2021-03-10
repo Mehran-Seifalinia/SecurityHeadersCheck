@@ -10,3 +10,16 @@ Security Headers check v1.0  *-* created by mehran-seiflainia *-*
          SecurityHeadersCheck --cors DOMAIN   # Run the script with an custom 'Origin' header.
 """
 ```
+
+# Change Log:
+* v 1.0.0:
+  * Release
+* v 1.1.0:
+  * Fix pip modules installation
+* v 1.5:
+  * Fix 302 redirection problem
+  * Fix HTTPSConnectionPool error
+  * Edit display to better view
+  * Change "link" variables to dictionary
+* v 2.0:
+  * Add "How to fix" web view
