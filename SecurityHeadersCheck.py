@@ -24,7 +24,7 @@ try:
 except Exception as error:
     print(error)
     exit()
-
+    
 # Colors
 default = Fore.RESET
 lred = Fore.LIGHTRED_EX
@@ -145,17 +145,35 @@ def check_params():
     else:
         help()
 
-# main
-try:
-    clear()
-    cors = check_params()
-    if cors == False:
-        print(f"{lblue}[*] It's possible to sent 'Origin' header in your request check {lred}{script} -h {lblue}[*]{default}")
-    url = input("Please enter the URL --> ")
-    if "http" not in url:
-        url = "http://" + url
-    headers = get_headers(url, cors, origin_header)
-    is_exist(headers)
-    printer(url, headers)
-except Exception as error:
-    print(error)
+# Show links in browser
+def web_view(starter):
+    if starter:
+        for link in not_exist_header:
+            link = link.replace("-", "_")
+            open_new_tab(links[link])
+    else:
+        print(f"\n{lblue}Goodbye ;){default}")
+
+# Main
+def main():
+    try:
+        clear()
+        cors = check_params()
+        if cors == False:
+            print(f"{lblue}[*] It's possible to sent 'Origin' header in your request check {lred}{script} -h {lblue}[*]{default}")
+        url = input("Please enter the URL --> ")
+        if "http" not in url:
+            url = "http://" + url
+        headers = get_headers(url, cors, origin_header)
+        is_exist(headers)
+        printer(url, headers)
+        web_view = input(f"\n{default}[*_*] Do you like learn how to implement missed headers? (y/N) -> ").lower()
+        if web_view == "yes" or web_view == "y":
+            return True
+        else:
+            return False
+    except Exception as error:
+        print(error)
+
+# Run
+web_view(main())
