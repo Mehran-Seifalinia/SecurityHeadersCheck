@@ -163,7 +163,7 @@ def main():
             print(f"{lblue}[*] It's possible to sent 'Origin' header in your request check {lred}{script} -h {lblue}[*]{default}")
         url = input("Please enter the URL --> ")
         if "http" not in url:
-            url = "http://" + url
+            url = "https://" + url
         headers = get_headers(url, cors, origin_header)
         is_exist(headers)
         printer(url, headers)
