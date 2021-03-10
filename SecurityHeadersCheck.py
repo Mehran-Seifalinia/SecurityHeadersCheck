@@ -1,21 +1,29 @@
 #!/usr/bin/env python3
-# Import modules
+
+# Import internal modules
 try:
-    from requests import head
     from sys import argv
     from os import name, system
+    from webbrowser import open_new_tab
+except Exception as error:
+    print(error)
+    exit()
+
+# install modules
+try:
+    system("pip install requests")
+    system("pip install colorama")
+except Exception as error:
+    print(error)
+    exit()
+
+# Import external modules
+try:
+    from requests import head
     from colorama import init, Fore
-except ModuleNotFoundError as error:
-    name = str(error).split("\'")[1]
-    install = input(f"[!] Please install {name} module manually or type \'install\' then press enter.").lower()
-    if install == "install":
-        try:
-            system(f"pip install {name}")
-        except:
-            print(f"[!] Something wrong, Please install '{name}' manually.")
-            exit()
-    else:
-        exit()
+except Exception as error:
+    print(error)
+    exit()
 
 # Colors
 default = Fore.RESET
